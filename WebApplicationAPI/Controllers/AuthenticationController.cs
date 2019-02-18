@@ -13,6 +13,7 @@ using WebApplicationAPI.Extension;
 using WebApplicationAPI.Model;
 using WebApplicationAPI.Models;
 using WebApplicationAPI.security;
+using WebApplicationAPI.Services;
 
 namespace WebApplicationAPI.Controllers
 {
@@ -24,6 +25,12 @@ namespace WebApplicationAPI.Controllers
         private UserManager<AuthenticationUser> AuthenticatedUserManager;
         private readonly WebApplicationAPIContext Context;
         private const string SECURE_KEY = "4F08A4313838148CFE9B0B7A792093B1FD32F7A4B040C52B5092B4191AB16928";
+
+        private bool IsSubscribedToUserCreationEventArgs { get; set; } = false;
+        private bool IsSubscribedToAdminCreationEventArgs { get; set; } = false;
+        private bool IsSubscribedToRootUserCreationEventArgs { get; set; } = false;
+
+        private UserService UserService = UserService.Get;
 
         public AuthenticationController(UserManager<AuthenticationUser> authenticationUserManager)
         {
@@ -69,34 +76,78 @@ namespace WebApplicationAPI.Controllers
             catch(InvalidOperationException) { }
 
             Response.StatusCode = 401;
-            return Content("You are not authorized".ToErrorMessage());
+            return Content("You are not authorized".ToResponseMessage());
         }
 
         [HttpPost]
         [Route("user/create")]
         public async Task<IActionResult> Create([FromBody] NewUser newUserCredential)
         {
-            try
-            {
-                if (newUserCredential != null)
-                {
-                    if(DbHandler.CreateNewUser(newUserCredential))
-                    {
-                        JwtInstance jwtInstance = JwtCreator.Create(newUserCredential);
-                        return Ok(new
-                        {
-                            username = newUserCredential.UserName,
-                            email = newUserCredential.Email,
-                            token = jwtInstance.Token,
-                            expiration = jwtInstance.Validation
-                        });
-                    }
-                }
-            }
-            catch (InvalidOperationException) { }
+            var result = this.UserService.InserNewUser(newUserCredential: newUserCredential);
 
-            Response.StatusCode = 401;
-            return Content("You are not authorized".ToErrorMessage());
+            if(!result.Succeed)
+            {
+                Response.StatusCode = 500;
+                return Content(result.ErrorMessage.ToResponseMessage());
+            }
+            else
+            {
+                return Ok(new
+                {
+                    username = result.UserName,
+                    email = result.Email,
+                    token = result.Token,
+                    expiration = result.Expiration
+                });
+            }
+
+
+            //var statusCode = 401;
+            //var Result = "";
+
+            //if (!IsSubscribedToUserCreationEventArgs)
+            //{
+            //    this.UserService.userCreationActionResult += (actionResult) =>
+            //    {
+            //        if(!actionResult.Succeed)
+            //        {
+            //            statusCode = 401;
+            //            ContentResult = actionResult.Error
+            //            return Content("You are not authorized".ToResponseMessage());
+            //        }
+
+            //        Response.StatusCode = 401;
+            //        return Content("You are not authorized".ToResponseMessage());
+
+            //    };
+
+            //    IsSubscribedToUserCreationEventArgs = true;
+            //}
+
+            //this.UserService.InserNewUser(newUserCredential: newUserCredential);
+
+
+            //try
+            //{
+            //    if (newUserCredential != null)
+            //    {
+            //        if(DbHandler.CreateNewUser(newUserCredential, AuthorizationVerifier.USER))
+            //        {
+            //            JwtInstance jwtInstance = JwtCreator.Create(newUserCredential);
+            //            return Ok(new
+            //            {
+            //                username = newUserCredential.UserName,
+            //                email = newUserCredential.Email,
+            //                token = jwtInstance.Token,
+            //                expiration = jwtInstance.Validation
+            //            });
+            //        }
+            //    }
+            //}
+            //catch (InvalidOperationException) { }
+
+            //Response.StatusCode = 401;
+            //return Content("You are not authorized".ToResponseMessage());
         }
     }
 }

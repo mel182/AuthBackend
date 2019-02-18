@@ -18,7 +18,8 @@ namespace WebApplicationAPI.Models
         {
         }
 
-        public DbSet<WebApplicationAPI.Model.Post> Post { get; set; }
+        public DbSet<Post> Post { get; set; }
+        public DbSet<RegisteredUser> RegisteredUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

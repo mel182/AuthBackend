@@ -37,7 +37,7 @@ namespace WebApplicationAPI.Controllers
             }
 
             Response.StatusCode = 401;
-            return Content("You are not authorized".ToErrorMessage());  
+            return Content("You are not authorized".ToResponseMessage());  
         }
 
         // GET: api/post/5
@@ -49,7 +49,7 @@ namespace WebApplicationAPI.Controllers
             if (post == null)
             {
                 Response.StatusCode = 404;
-                return Content("Record not found".ToErrorMessage());
+                return Content("Record not found".ToResponseMessage());
             }
 
             return post;
@@ -65,7 +65,7 @@ namespace WebApplicationAPI.Controllers
             if (id != post.Id)
             {
                 Response.StatusCode = 400;
-                return Content("Missing request argument".ToErrorMessage());
+                return Content("Missing request argument".ToResponseMessage());
             }
 
             _context.Entry(post).State = EntityState.Modified;
@@ -79,17 +79,17 @@ namespace WebApplicationAPI.Controllers
                 if (!PostExists(id))
                 {
                     Response.StatusCode = 404;
-                    return Content("Record not found".ToErrorMessage());
+                    return Content("Record not found".ToResponseMessage());
                 }
                 else
                 {
                     Response.StatusCode = 500;
-                    return Content("Error updating post record".ToErrorMessage());
+                    return Content("Error updating post record".ToResponseMessage());
                 }
             }
 
             Response.StatusCode = 200;
-            return Content("Record updated".ToErrorMessage());
+            return Content("Record updated".ToResponseMessage());
         }
 
         // POST: api/post/add
@@ -100,7 +100,7 @@ namespace WebApplicationAPI.Controllers
             if(post.Content.Equals("") || post.Title.Equals("") || post.Publish_date == 0)
             {
                 Response.StatusCode = 400;
-                return Content("Missing body argument".ToErrorMessage());
+                return Content("Missing body argument".ToResponseMessage());
             }
 
             Post refinedInstance = post.Refine();
@@ -120,14 +120,14 @@ namespace WebApplicationAPI.Controllers
             if (post == null)
             {
                 Response.StatusCode = 404;
-                return Content("Post record not found".ToErrorMessage());
+                return Content("Post record not found".ToResponseMessage());
             }
 
             _context.Post.Remove(post);
             await _context.SaveChangesAsync();
 
             Response.StatusCode = 200;
-            return Content("Post record deleted".ToErrorMessage()); ;
+            return Content("Post record deleted".ToResponseMessage()); ;
         }
 
         private bool PostExists(long id)

@@ -15,7 +15,7 @@ namespace WebApplicationAPI.Extension
             };
         }
 
-        public static string ToErrorMessage(this string error_message)
+        public static string ToResponseMessage(this string error_message)
         {   
             return "{"+string.Format(@"""message"" : ""{0}""", error_message)+"}";
         }

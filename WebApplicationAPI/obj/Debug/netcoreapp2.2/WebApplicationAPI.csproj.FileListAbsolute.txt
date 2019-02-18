@@ -26,3 +26,17 @@ C:\Users\mvrolijk\Documents\GitHub\AuthBackend\WebApplicationAPI\obj\Debug\netco
 C:\Users\mvrolijk\Documents\GitHub\AuthBackend\WebApplicationAPI\obj\Debug\netcoreapp2.2\WebApplicationAPI.RazorTargetAssemblyInfo.cache
 C:\Users\mvrolijk\Documents\GitHub\AuthBackend\WebApplicationAPI\obj\Debug\netcoreapp2.2\WebApplicationAPI.dll
 C:\Users\mvrolijk\Documents\GitHub\AuthBackend\WebApplicationAPI\obj\Debug\netcoreapp2.2\WebApplicationAPI.pdb
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\bin\Debug\netcoreapp2.2\WebApplicationAPI.deps.json
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\bin\Debug\netcoreapp2.2\WebApplicationAPI.runtimeconfig.json
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\bin\Debug\netcoreapp2.2\WebApplicationAPI.runtimeconfig.dev.json
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\bin\Debug\netcoreapp2.2\WebApplicationAPI.dll
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\bin\Debug\netcoreapp2.2\WebApplicationAPI.pdb
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\obj\Debug\netcoreapp2.2\WebApplicationAPI.csproj.CoreCompileInputs.cache
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\obj\Debug\netcoreapp2.2\WebApplicationAPI.RazorAssemblyInfo.cache
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\obj\Debug\netcoreapp2.2\WebApplicationAPI.RazorAssemblyInfo.cs
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\obj\Debug\netcoreapp2.2\WebApplicationAPI.AssemblyInfoInputs.cache
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\obj\Debug\netcoreapp2.2\WebApplicationAPI.AssemblyInfo.cs
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\obj\Debug\netcoreapp2.2\WebApplicationAPI.RazorTargetAssemblyInfo.cache
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\obj\Debug\netcoreapp2.2\WebApplicationAPI.dll
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\obj\Debug\netcoreapp2.2\WebApplicationAPI.pdb
+C:\Users\mvrolijk\Documents\GitHub\JWTBackend\WebApplicationAPI\obj\Debug\netcoreapp2.2\WebApplicationAPI.csprojAssemblyReference.cache

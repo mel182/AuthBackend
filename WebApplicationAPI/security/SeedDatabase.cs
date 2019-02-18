@@ -28,7 +28,8 @@ namespace WebApplicationAPI.oAuth2
                     Email = "admin@postapplication.com",
                     SecurityStamp = Guid.NewGuid().ToString(),
                     UserName = "admin",
-                    PasswordHash = Base64Encoder.Encode("admin")
+                    PasswordHash = Base64Encoder.Encode("admin"),
+                    Role = Enum.RoleType.ROOT
                 };
                 context.Users.Add(user);
                 await context.SaveChangesAsync();

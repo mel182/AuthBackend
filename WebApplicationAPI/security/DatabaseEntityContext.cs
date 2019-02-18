@@ -7,20 +7,20 @@ using WebApplicationAPI.Model;
 
 namespace WebApplicationAPI.security
 {
-    public partial class DatabaseEntityContext: DbContext
-    {
-        public static string ConnectionString { get; set; } = ""; 
+    //public partial class DatabaseEntityContext: DbContext
+    //{
+    //    public static string ConnectionString { get; set; } = ""; 
 
-        public DatabaseEntityContext() : base("name=WebApplicationAPIContext")
-        {
+    //    public DatabaseEntityContext() : base("name=WebApplicationAPIContext")
+    //    {
 
-        }
+    //    }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
+    //    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    //    {
+    //        base.OnModelCreating(modelBuilder);
+    //    }
 
-        public virtual DbSet<AuthenticationUser> AuthenticationUsers { get; set; }
-    }
+    //    public virtual DbSet<AuthenticationUser> AuthenticationUsers { get; set; }
+    //}
 }
